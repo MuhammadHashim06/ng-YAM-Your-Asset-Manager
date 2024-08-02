@@ -8,5 +8,8 @@ export const constant={
             code:400,
             message:'Login Fail',
         }
+    },
+    input:{
+        error:'Please fill Field',
     }
 }
