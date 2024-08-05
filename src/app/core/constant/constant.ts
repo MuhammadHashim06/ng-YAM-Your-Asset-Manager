@@ -1,5 +1,8 @@
 export const constant={
-    apiUrl:'http://localhost:4200/home',
+    apiEndPoint:{
+        user:'http://localhost:5235/user'
+    },
+    apiUrl:'http://localhost:5235/',
     login:{
         success:{
             code:200,
@@ -12,4 +15,9 @@ export const constant={
     input:{
         error:'Please fill Field',
     }
+}
+
+export const response={
+    code:404,
+    message:'Page Not Found',
 }
