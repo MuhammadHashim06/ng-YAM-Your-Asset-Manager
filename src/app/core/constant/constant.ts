@@ -1,8 +1,7 @@
 export const constant={
     apiEndPoint:{
-        user:'http://localhost:5235/user'
+        register:'http://localhost:5235/SignUp'
     },
-    apiUrl:'http://localhost:5235/',
     login:{
         success:{
             code:200,
