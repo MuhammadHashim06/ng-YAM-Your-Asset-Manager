@@ -15,10 +15,10 @@ export class SignupComponent {
     password: new FormControl('', Validators.required)
   })
 
-  verify($event: MouseEvent) {
+  async verify($event: MouseEvent) {
     $event.preventDefault()
     debugger;
-    this.registerservice.signup(this.registeruser.value).subscribe({next:(res)=>{
+    (await this.registerservice.signup(this.registeruser.value)).subscribe({next:(res)=>{
       console.log(res);
       
     }})

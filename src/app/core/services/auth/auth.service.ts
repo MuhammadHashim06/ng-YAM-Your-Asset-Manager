@@ -12,7 +12,11 @@ export class AuthService {
  registerapi=constant.apiEndPoint.register
   constructor(private http:HttpClient) { }
 
-  signup(registerData:any):Observable<Iregisterresponse>{
-    return this.http.post<Iregisterresponse>(`${this.registerapi}`,registerData);
+   signup(registerData:any):Observable<Iregisterresponse>{
+    return  this.http.post<Iregisterresponse>(`${this.registerapi}`,registerData);
   }
+
+  //  signup(registerData:any){
+  //   return this.http.post(this.registerapi,registerData);
+  //  }
 }
