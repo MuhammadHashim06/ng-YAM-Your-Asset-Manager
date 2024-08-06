@@ -16,7 +16,7 @@ export class ConfirmemailComponent implements OnInit {
   token = ''
   email = ''
   imageurl = ''
-  message = constant.register
+  message:any
   ngOnInit(): void {
 
     // this.route.queryParams.subscribe(params => {
@@ -26,27 +26,32 @@ export class ConfirmemailComponent implements OnInit {
     this.token=this.route.snapshot.queryParams['token']
     this.email=this.route.snapshot.queryParams['email']
 
-    console.log(this.token);
-    console.log(this.email);
+    // console.log(this.token);
+    // console.log(this.email);
     
     this.service.emailconfirm(this.token,this.email).pipe(
       catchError(error => {
         console.log(error);
-        
+         this.imageurl='failed.png'
         // if (error.status === 403) {
         //   // Handle 403 error
         //   console.error(error);
         // }
         // Handle other errors if needed
+        this.message=constant.register.fail.emailverification
         return throwError(error);
       })
     )
     .subscribe((res)=>{
+      this.message=constant.register.success
+      this.imageurl='emails.png'
       console.log(res);
       
     },(error) => {
       // Optionally handle the error here if you want to do something specific
       console.error('An error occurred:', error);
+      this.message=constant.register.fail
+      this.imageurl='failed.png'
     })
 
   }

@@ -29,9 +29,9 @@ export const constant = {
         },
         fail: {
             // Registeration failed Verfication
-            registeration: 'Registration Successfull',
+            registeration: 'Registration Fail',
             // Email Verification message on failed Registration
-            emailvaerification: 'Your Email Address is Successfully Verified! PLease login to access your account!'
+            emailverification: 'Your Email Address is not Confirmed!'
         }
     },
 
