@@ -7,7 +7,10 @@
     display: grid;
     place-items: center;
   }
-  
+  .error {
+    color: red;
+    font-size: 0.8em;
+  }
   form {
     background-color: #ffffff;
     border-radius: 12px;

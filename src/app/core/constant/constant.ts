@@ -1,9 +1,8 @@
-import { register } from "module"
-
 export const constant = {
     apiEndPoint: {
         register: 'http://localhost:5235/SignUp',
-        confirmemail: 'http://localhost:5235/ConfirmEmail'
+        confirmemail: 'http://localhost:5235/ConfirmEmail',
+        login:'http://localhost:5235/SignIn'
     },
     login: {
         success: {
@@ -39,6 +38,20 @@ export const constant = {
         required: 'Please fill Field',
         email: 'Please Enter Valid Email',
         password: 'Password must include at least one uppercase letter, one lowercase letter, one number, and one special character'
+    },
+    CRUDmessages:{
+        created:{
+            message:'Succesfully Created',
+            theme:'green'
+        },
+        updated:{
+            message:'Succesfully Updated',
+            theme:'green'
+        },
+        deleted:{
+            message:'Succesfully Deleted',
+            theme:'green'
+        },        
     }
 }
 

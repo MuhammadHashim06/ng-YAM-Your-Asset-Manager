@@ -10,16 +10,16 @@ import { catchError, throwError } from 'rxjs';
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
-  inputerrormessages=constant.inputerrormessage
- load=false
-isemailregister=false;
-accountsuccessmessage=constant.register.success.accountsuccess
-verificationmessage=constant.register.success.verificationmessage
-  constructor(private registerservice : AuthService){}
+  inputerrormessages = constant.inputerrormessage
+  load = false
+  isemailregister = false;
+  accountsuccessmessage = constant.register.success.accountsuccess
+  verificationmessage = constant.register.success.verificationmessage
+  constructor(private registerservice: AuthService) { }
   registeruser = new FormGroup({
-    email: new FormControl('', [Validators.required,Validators.email]),
+    email: new FormControl('', [Validators.required, Validators.email]),
     userName: new FormControl('', Validators.required),
-    password: new FormControl('', [Validators.required,Validators.minLength(6),this.passwordValidator])
+    password: new FormControl('', [Validators.required, this.passwordValidator])
   })
   passwordValidator(control: AbstractControl): ValidationErrors | null {
     const value = control.value;
@@ -37,46 +37,44 @@ verificationmessage=constant.register.success.verificationmessage
     }
     return null;
   }
-   verify($event: MouseEvent) {
+  verify($event: MouseEvent) {
     $event.preventDefault();
-    this.load=true;
-    // debugger;
-    this.registerservice.signup(this.registeruser.value).pipe(
-      
-      catchError(error => {
-        if (error.status === 403) {
-          this.load=false
-          // Handle 403 error
-          console.error('Access denied. You do not have permission to perform this action.');
-          alert('Access denied. You do not have permission to perform this action.');
-        }
-        // Handle other errors if needed
-        return throwError(error);
-      })
-    ).subscribe(
-      (res) => {
-        this.load=false
-        // alert(res.responceData[0]);
-        this.isemailregister=true;
-      },
-      (error) => {
-        this.load=false
-        // Optionally handle the error here if you want to do something specific
-        console.error('An error occurred:', error);
-      }
-    );
-//     this.registerservice.signup(this.registeruser.value).subscribe({next:(res)=>{
-//       alert(res.responceData)
-//     }}),({next:(error:any)=>{
-// console.log(error);
-//     }})
-    
-    this.registeruser.setValue({
-      email: '',
-      userName: '',
-      password: '',
-    })
-    this.registeruser.markAsUntouched()
-  }
+    if (this.registeruser.valid) {
+      this.load = true;
+      // debugger;
+      this.registerservice.signup(this.registeruser.value).pipe(
 
+        catchError(error => {
+          if (error.status === 403) {
+            this.load = false
+            // Handle 403 error
+            console.error('Access denied. You do not have permission to perform this action.');
+            alert('Access denied. You do not have permission to perform this action.');
+          }
+          // Handle other errors if needed
+          return throwError(error);
+        })
+      ).subscribe(
+        (res) => {
+          this.load = false
+          // alert(res.responceData[0]);
+          this.isemailregister = true;
+        },
+        (error) => {
+          this.load = false
+          // Optionally handle the error here if you want to do something specific
+          console.error('An error occurred:', error);
+        }
+      );
+      this.registeruser.setValue({
+        email: '',
+        userName: '',
+        password: '',
+      })
+      this.registeruser.markAsUntouched()
+    } else {
+      this.registeruser.markAllAsTouched()
+    }
+
+  }
 }

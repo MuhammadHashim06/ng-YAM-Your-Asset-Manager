@@ -92,7 +92,9 @@ form .link button {
   font-size: 1rem;
   cursor: pointer;
 }
-
+// form .link button:disabled{
+//   background-color: grey;
+// }
 form .link a {
   color: rgba(90, 140, 255, 1);
   text-decoration: none;
