@@ -13,4 +13,5 @@ export class UserService {
   register():Observable<Iregisteruser[]>{
     return this.http.get<Iregisteruser[]>('http://localhost:3000/users')
   }
+  
 }

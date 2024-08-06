@@ -6,7 +6,7 @@ export interface Iregisteruser{
 
 export interface Iregisterresponse {
     status: number
-    responceData: string[]
-    errors: any
+    responceData:any
+    errors:any
   }
   

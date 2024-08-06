@@ -1,0 +1,41 @@
+.form {
+    background-color: rgba(72, 123, 255, 1);
+    background-image: url("/Shape.png");
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    display: grid;
+    place-items: center;
+  }
+.form section{
+    background-color: #ffffff;
+    max-width: 60%;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  animation: updowm 1s ease;
+  // text-align: center;
+  
+  }
+  @keyframes updowm {
+    0%{
+      transform: translateY(-100%);
+      opacity: 0;
+    }100%{
+      transform: translateY(0%);
+      opacity: 1;
+    }
+    
+  }
+  .form section button{
+    background-color: rgba(72, 128, 255, 1);
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 10px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+  }

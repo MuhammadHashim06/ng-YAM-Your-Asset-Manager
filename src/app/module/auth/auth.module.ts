@@ -6,12 +6,14 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { RouterLink } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ConfirmemailComponent } from './confirmemail/confirmemail.component';
 
 
 @NgModule({
   declarations: [
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    ConfirmemailComponent
   ],
   imports: [
     CommonModule,

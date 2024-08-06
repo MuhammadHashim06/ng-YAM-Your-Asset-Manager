@@ -9,14 +9,13 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
- registerapi=constant.apiEndPoint.register
+ registerapi=constant.apiEndPoint
   constructor(private http:HttpClient) { }
 
    signup(registerData:any):Observable<Iregisterresponse>{
-    return  this.http.post<Iregisterresponse>(`${this.registerapi}`,registerData);
+    return  this.http.post<Iregisterresponse>(`${this.registerapi.register}`,registerData);
   }
-
-  //  signup(registerData:any){
-  //   return this.http.post(this.registerapi,registerData);
-  //  }
+  emailconfirm(token:string,email:string):Observable<Iregisterresponse>{
+    return this.http.get<Iregisterresponse>(`${this.registerapi.confirmemail}?token=${token}&email=${email}`)
+  }
 }
