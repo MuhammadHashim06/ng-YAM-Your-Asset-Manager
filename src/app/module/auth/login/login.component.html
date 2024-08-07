@@ -1,3 +1,7 @@
+<ng-container *ngIf="issuccessfull" >
+  <app-alert [alert]="alertData"></app-alert>
+<app-alert></app-alert>
+</ng-container>
 <div class="form">
     <form action=""  [formGroup]="loginuser">
       <div class="head">

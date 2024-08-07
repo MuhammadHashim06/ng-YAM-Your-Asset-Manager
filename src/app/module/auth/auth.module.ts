@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RouterLink } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConfirmemailComponent } from './confirmemail/confirmemail.component';
+import { AlertComponent } from "../../shared/reusablecomponents/alert/alert.component";
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ConfirmemailComponent } from './confirmemail/confirmemail.component';
     AuthRoutingModule,
     RouterLink,
     ReactiveFormsModule,
-    NgOptimizedImage
-  ]
+    NgOptimizedImage,
+    AlertComponent
+]
 })
 export class AuthModule { }

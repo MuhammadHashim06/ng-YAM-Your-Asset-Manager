@@ -3,6 +3,7 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators }
 import { constant } from '../../../core/constant/constant';
 import { AuthService } from '../../../core/services/auth/auth.service';
 import { catchError, throwError } from 'rxjs';
+import { Alert } from '../../../shared/reusablecomponents/alert/alert.component';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,10 @@ export class LoginComponent {
 
   inputerrormessages = constant.inputerrormessage
   issuccessfull=false
+  alertData: Alert={
+    type:'success',
+    message:''
+  };
   loginuser = new FormGroup({
     email: new FormControl('', Validators.required),
     password: new FormControl('', [Validators.required, this.passwordValidator])
@@ -40,29 +45,37 @@ export class LoginComponent {
     $event.preventDefault()
 
     if (this.loginuser.valid) {
-      // debugger;
-      this.loginservice.login(this.loginuser.value).pipe(
-        catchError(error => {
-          if (error.status === 403) {
-            // Handle 403 error
-            console.error('Access denied. You do not have permission to perform this action.');
-            alert('Access denied. You do not have permission to perform this action.');
-          }
-          // Handle other errors if needed
-          return throwError(error);
-        })
-      ).subscribe(
-        (res) => {
-          this.issuccessfull=true
+      this.alertData = {
+        type: 'success',
+        message: 'Operation successful!'
+      };      
+      this.issuccessfull=true
           setTimeout(() => {
             this.issuccessfull=false
           }, 3000);
-        },
-        (error) => {
-          // Optionally handle the error here if you want to do something specific
-          console.error('An error occurred:', error);
-        }
-      );
+
+      // this.loginservice.login(this.loginuser.value).pipe(
+      //   catchError(error => {
+      //     if (error.status === 403) {
+      //       // Handle 403 error
+      //       console.error('Access denied. You do not have permission to perform this action.');
+      //       alert('Access denied. You do not have permission to perform this action.');
+      //     }
+      //     // Handle other errors if needed
+      //     return throwError(error);
+      //   })
+      // ).subscribe(
+      //   (res) => {
+      //     this.issuccessfull=true
+      //     setTimeout(() => {
+      //       this.issuccessfull=false
+      //     }, 3000);
+      //   },
+      //   (error) => {
+      //     // Optionally handle the error here if you want to do something specific
+      //     console.error('An error occurred:', error);
+      //   }
+      // );
     }
     else {
       this.loginuser.markAllAsTouched()
