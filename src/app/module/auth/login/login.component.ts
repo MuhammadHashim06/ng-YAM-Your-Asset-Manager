@@ -11,6 +11,22 @@ import { Alert } from '../../../shared/reusablecomponents/alert/alert.component'
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+verifyrmail($event: MouseEvent) {
+  $event.preventDefault()
+  
+const email={email:this.email}
+  this.loginservice.verifyemail(email).pipe(
+    catchError(error=>{
+      console.error(error)
+      return throwError(error)
+    })
+  ).subscribe((res)=>{
+    console.log(res);
+    
+  },(error)=>{
+    console.error(error);
+  })
+}
 
   inputerrormessages = constant.inputerrormessage
   issuccessfull=false
@@ -18,6 +34,11 @@ export class LoginComponent {
     type:'success',
     message:''
   };
+  isforget=false;
+email: string='';
+  forget(){
+    this.isforget=true;
+  }
   loginuser = new FormGroup({
     email: new FormControl('', Validators.required),
     password: new FormControl('', [Validators.required, this.passwordValidator])
@@ -45,37 +66,33 @@ export class LoginComponent {
     $event.preventDefault()
 
     if (this.loginuser.valid) {
-      this.alertData = {
-        type: 'success',
-        message: 'Operation successful!'
-      };      
-      this.issuccessfull=true
+      this.loginservice.login(this.loginuser.value).pipe(
+        catchError(error => {
+          if (error.status === 400 || error.status===404 ) {
+            // Handle 403 error
+            console.error('Email or Passowrd is Not correct');
+            alert('User Not Found Check, Please Check Your Credential');
+          }
+          // Handle other errors if needed
+          return throwError(error);
+        })
+      ).subscribe(
+        (res) => {
+          this.issuccessfull=true
           setTimeout(() => {
             this.issuccessfull=false
           }, 3000);
-
-      // this.loginservice.login(this.loginuser.value).pipe(
-      //   catchError(error => {
-      //     if (error.status === 403) {
-      //       // Handle 403 error
-      //       console.error('Access denied. You do not have permission to perform this action.');
-      //       alert('Access denied. You do not have permission to perform this action.');
-      //     }
-      //     // Handle other errors if needed
-      //     return throwError(error);
-      //   })
-      // ).subscribe(
-      //   (res) => {
-      //     this.issuccessfull=true
-      //     setTimeout(() => {
-      //       this.issuccessfull=false
-      //     }, 3000);
-      //   },
-      //   (error) => {
-      //     // Optionally handle the error here if you want to do something specific
-      //     console.error('An error occurred:', error);
-      //   }
-      // );
+          console.log(res);
+          this.alertData = {
+            type: 'success',
+            message:res.responceData.message
+          };      
+        },
+        (error) => {
+          // Optionally handle the error here if you want to do something specific
+          console.error('An error occurred:', error);
+        }
+      );
     }
     else {
       this.loginuser.markAllAsTouched()

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ConfirmemailComponent } from './confirmemail/confirmemail.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,9 @@ const routes: Routes = [
   },{
     path:'EmailConfirmation',
     component:ConfirmemailComponent
+  },{
+    path:'resetpassword',
+    component:ResetpasswordComponent
   }
 ];
 

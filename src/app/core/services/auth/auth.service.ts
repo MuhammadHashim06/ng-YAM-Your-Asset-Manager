@@ -18,7 +18,14 @@ export class AuthService {
   emailconfirm(token:string,email:string):Observable<Iregisterresponse>{
     return this.http.get<Iregisterresponse>(`${this.registerapi.confirmemail}?token=${token}&email=${email}`)
   }
-  login(registerData:any):Observable<Iregisterresponse>{
-    return  this.http.post<Iregisterresponse>(`${this.registerapi.login}`,registerData);
+  login(loginData:any):Observable<Iregisterresponse>{
+    return  this.http.post<Iregisterresponse>(`${this.registerapi.login}`,loginData);
+  }
+
+  verifyemail(email:{}):Observable<Iregisterresponse>{
+    return this.http.post<Iregisterresponse>(`${this.registerapi.emailverifyforgetpassword}`,email,)
+  }
+  resetemail(password:{}):Observable<Iregisterresponse>{
+    return this.http.post<Iregisterresponse>(`${this.registerapi.setresetpassword}`,password,)
   }
 }

@@ -2,7 +2,9 @@ export const constant = {
     apiEndPoint: {
         register: 'http://localhost:5235/SignUp',
         confirmemail: 'http://localhost:5235/ConfirmEmail',
-        login:'http://localhost:5235/SignIn'
+        login:'http://localhost:5235/SignIn',
+        emailverifyforgetpassword:'http://localhost:5235/ForgetPassword',
+        setresetpassword:'http://localhost:5235/ResetPassword' 
     },
     login: {
         success: {
@@ -37,7 +39,8 @@ export const constant = {
     inputerrormessage: {
         required: 'Please fill Field',
         email: 'Please Enter Valid Email',
-        password: 'Password must include at least one uppercase letter, one lowercase letter, one number, and one special character'
+        password: 'Password must include at least one uppercase letter, one lowercase letter, one number, and one special character',
+        passwordmatch:'Password didnot math'   
     },
     CRUDmessages:{
         created:{

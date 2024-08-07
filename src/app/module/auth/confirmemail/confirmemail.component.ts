@@ -21,15 +21,14 @@ export class ConfirmemailComponent implements OnInit {
   ngOnInit(): void {
 
     this.route.queryParams.subscribe(params => {
-      this.token = params['token'];
-      this.email = params['email'];
+      this.token = encodeURIComponent(params['token']);
+      this.email = encodeURIComponent(params['email']);
     });
     // this.token=decodeURIComponent(this.route.snapshot.queryParams['token'])
     // this.email=decodeURIComponent(this.route.snapshot.queryParams['email'])
 
     console.log(this.token);
     console.log(this.email);
-    // this.confirmEmail()
 
     this.service.emailconfirm(this.token, this.email).pipe(
       catchError(error => {
@@ -51,22 +50,5 @@ export class ConfirmemailComponent implements OnInit {
         this.imageurl = 'failed.png';
       }
     );
-    
-    
-    
-
   }
-  // async confirmEmail() {
-  //   try {
-  //     const res = await this.service.emailconfirm(this.token, this.email).toPromise();
-  //     this.message = constant.register.success;
-  //     this.imageurl = 'emails.png';
-  //     console.log(res);
-  //   } catch (error) {
-  //     console.error('An error occurred:', error);
-  //     this.message = constant.register.fail;
-  //     this.imageurl = 'failed.png';
-  //   }
-  // }
-
 }

@@ -5,16 +5,18 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { RouterLink } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmemailComponent } from './confirmemail/confirmemail.component';
 import { AlertComponent } from "../../shared/reusablecomponents/alert/alert.component";
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 
 @NgModule({
   declarations: [
     SignupComponent,
     LoginComponent,
-    ConfirmemailComponent
+    ConfirmemailComponent,
+    ResetpasswordComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { AlertComponent } from "../../shared/reusablecomponents/alert/alert.comp
     RouterLink,
     ReactiveFormsModule,
     NgOptimizedImage,
-    AlertComponent
+    AlertComponent,
+    FormsModule
 ]
 })
 export class AuthModule { }
