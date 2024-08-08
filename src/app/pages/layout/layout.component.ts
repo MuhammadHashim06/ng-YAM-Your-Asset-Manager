@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SidebarComponent } from '../../module/dashboard/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-layout',
