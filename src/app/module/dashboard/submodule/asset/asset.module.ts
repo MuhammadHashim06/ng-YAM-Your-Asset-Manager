@@ -6,6 +6,7 @@ import { AssetlistComponent } from './assetlist/assetlist.component';
 import { AssetcreateComponent } from './assetcreate/assetcreate.component';
 import { AssetdetailComponent } from './assetdetail/assetdetail.component';
 import { AsseteditComponent } from './assetedit/assetedit.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { AsseteditComponent } from './assetedit/assetedit.component';
   ],
   imports: [
     CommonModule,
-    AssetRoutingModule
+    AssetRoutingModule,
+    FormsModule
   ]
 })
 export class AssetModule { }

@@ -1,11 +1,45 @@
-export const constant = {
-    apiEndPoint: {
-        register: 'http://localhost:5235/SignUp',
-        confirmemail: 'http://localhost:5235/ConfirmEmail',
-        login:'http://localhost:5235/SignIn',
-        emailverifyforgetpassword:'http://localhost:5235/ForgetPassword',
-        setresetpassword:'http://localhost:5235/ResetPassword' 
+export const  apiEndPoint= {
+    authentication: {
+        isAlive: 'http://localhost:5235/IsAlive',
+        signUp: 'http://localhost:5235/SignUp',
+        confirmEmail: 'http://localhost:5235/ConfirmEmail',
+        signIn: 'http://localhost:5235/SignIn',
+        emailverifyforgetpassword: 'http://localhost:5235/ForgetPassword',
+        setresetpassword: 'http://localhost:5235/ResetPassword'
     },
+    organizationManagement: {
+        getOrganizationsInfo: 'http://localhost:5235/GetOrganizationsInfo',
+        createOrganization: 'http://localhost:5235/CreateOrganization',
+        updateOrganization: 'http://localhost:5235/UpdateOrganization',
+        organizationOwnerDetails: 'http://localhost:5235/OrganizationOwnerDetails',
+        deleteOrganization: 'http://localhost:5235/DeleteOrganization'
+    },
+    dashboard: {
+        organizationOwner: 'http://localhost:5235/api/dashboard/organization-owner',
+        assetManager: 'http://localhost:5235/api/dashboard/asset-manager'
+    },
+
+    logActions: 'http://localhost:5235/api/logs',
+
+    
+
+    profileManagement: {
+        getProfile: 'http://localhost:5235/api/profile',
+        updateProfile: 'http://localhost:5235/api/profile'
+    },
+
+    searchFunctionality: {
+        searchAssets: 'http://localhost:5235/api/assets/search'
+    },
+
+    // vendorManagement: {
+    //     getVendors: 'http://localhost:5235/api/vendors',
+    //     createVendor: 'http://localhost:5235/api/vendors',
+    //     updateVendor: (id) => `http://localhost:5235/api/vendors/${id}`,
+    //     deleteVendor: (id) => `http://localhost:5235/api/vendors/${id}`
+    // }
+}
+export const constant = {
     login: {
         success: {
             code: 200,

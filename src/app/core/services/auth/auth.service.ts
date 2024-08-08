@@ -1,25 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import{constant} from '../../constant/constant'
 import { Iregisterresponse, Iregisteruser } from '../../models/user';
 import { Observable } from 'rxjs';
+import { apiEndPoint } from '../../constant/constant';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
- registerapi=constant.apiEndPoint
+ registerapi=apiEndPoint.authentication
   constructor(private http:HttpClient) { }
 
    signup(registerData:any):Observable<Iregisterresponse>{
-    return  this.http.post<Iregisterresponse>(`${this.registerapi.register}`,registerData);
+    return  this.http.post<Iregisterresponse>(`${this.registerapi.signUp}`,registerData);
   }
   emailconfirm(token:string,email:string):Observable<Iregisterresponse>{
-    return this.http.get<Iregisterresponse>(`${this.registerapi.confirmemail}?token=${token}&email=${email}`)
+    return this.http.get<Iregisterresponse>(`${this.registerapi.confirmEmail}?token=${token}&email=${email}`)
   }
   login(loginData:any):Observable<Iregisterresponse>{
-    return  this.http.post<Iregisterresponse>(`${this.registerapi.login}`,loginData);
+    return  this.http.post<Iregisterresponse>(`${this.registerapi.signIn}`,loginData);
   }
 
   verifyemail(email:{}):Observable<Iregisterresponse>{

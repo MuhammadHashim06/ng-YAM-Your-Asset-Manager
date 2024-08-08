@@ -64,6 +64,9 @@ export class LoginComponent {
     ).subscribe(
       res => {
         console.log(res);
+
+        localStorage.setItem('userData',JSON.stringify(res))
+
         this.load = false;
         alert('Check Your Email');
       },
@@ -90,6 +93,7 @@ export class LoginComponent {
       ).subscribe(
         res => {
           this.load = false;
+          localStorage.setItem('userData',JSON.stringify(res))
           this.router.navigateByUrl('/dashboard'); // Corrected '/dasboard' to '/dashboard'
         },
         error => {
