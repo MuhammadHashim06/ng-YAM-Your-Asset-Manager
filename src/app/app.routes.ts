@@ -12,7 +12,7 @@ export const routes: Routes = [
         loadChildren:()=>import('./module/auth/auth.module').then(m => m.AuthModule)
     },{
         path:'dasboard',
-        loadChildren:()=>import('./module/auth/auth.module').then(m=>m.AuthModule)
+        loadChildren:()=>import('./module/asset/asset.module').then(m=>m.AssetModule)
     },
     {
         path:'**',
